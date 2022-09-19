@@ -1,0 +1,83 @@
+CREATE TABLE marvel_movies (
+    id INTEGER PRIMARY KEY,
+    title TEXT,
+    rating INTEGER,
+    year INTEGER,
+    budget INTEGER,
+    box_office INTEGER,
+    profit INTEGER);
+    
+INSERT INTO marvel_movies VALUES (1, "Iron Man", 94, 2008, 140000000, 585800000, 445800000);
+INSERT INTO marvel_movies VALUES (2, "The Incredible Hulk", 67, 2008, 137500000, 264800000, 127300000);
+INSERT INTO marvel_movies VALUES (3, "Iron Man 2", 72, 2010, 170000000, 623900000, 453900000);
+INSERT INTO marvel_movies VALUES (4, "Thor", 77, 2011, 150000000, 449300000, 299300000);
+INSERT INTO marvel_movies VALUES (5, "Captain America: The First Avenger", 79, 2011, 140000000, 370600000, 230600000);
+INSERT INTO marvel_movies VALUES (6, "The Avengers", 91, 2012, 220000000, 1519000000, 1299000000);
+INSERT INTO marvel_movies VALUES (7, "Iron Man 3", 79, 2013, 200000000, 1215000000, 1150000000);
+INSERT INTO marvel_movies VALUES (8, "Thor: The Dark World", 66, 2013, 150000000, 644800000, 494800000);
+INSERT INTO marvel_movies VALUES (9, "Captain America: Winter Soldier", 90, 2014, 170000000, 714400000, 544400000);
+INSERT INTO marvel_movies VALUES (10, "Guardians of the Galaxy", 92, 2014, 195900000, 772800000, 576900000);
+INSERT INTO marvel_movies VALUES (11, "Avengers: Age of Ultron", 76, 2015, 365000000, 1403000000, 1380000000);
+INSERT INTO marvel_movies VALUES (12, "Ant-Man", 83, 2015, 130000000, 519300000, 389300000);
+INSERT INTO marvel_movies VALUES (13, "Captain America: Civil War", 90, 2016, 250000000, 1153000000, 903000000);
+INSERT INTO marvel_movies VALUES (14, "Doctor Strange", 89, 2016, 165000000, 677800000, 512800000);
+INSERT INTO marvel_movies VALUES (15, "Guardians of the Galaxy Vol. 2", 85, 2017, 200000000, 863800000, 663800000);
+INSERT INTO marvel_movies VALUES (16, "Spider-Man: Homecoming", 92, 2017, 175000000, 880200000, 705200000);
+INSERT INTO marvel_movies VALUES (17, "Thor: Ragnarok", 93, 2017, 180000000, 854000000, 674000000);
+INSERT INTO marvel_movies VALUES (18, "Black Panther", 96, 2018, 200000000, 1348000000, 1148000000);
+INSERT INTO marvel_movies VALUES (19, "Avengers: Infinity War", 85, 2018, 325000000, 2048000000, 1723000000);
+INSERT INTO marvel_movies VALUES (20, "Ant-Man and The Wasp", 87, 2018, 130000000, 622700000, 492700000);
+INSERT INTO marvel_movies VALUES (21, "Captain Marvel", 79, 2019, 152000000, 1128000000, 976000000);
+INSERT INTO marvel_movies VALUES (22, "Avengers: Endgame", 94, 2019, 356000000, 2798000000, 2442000000);
+INSERT INTO marvel_movies VALUES (23, "Spider-Man: Far From Home", 90, 2019, 160000000, 1132000000, 972000000);
+INSERT INTO marvel_movies VALUES (24, "Black Widow", 79, 2021, 200000000, 379800000, 179800000);
+INSERT INTO marvel_movies VALUES (25, "Shang-Chi and The Legend of The Ten Rings", 91, 2021, 150000000, 432200000, 282200000);
+INSERT INTO marvel_movies VALUES (26, "Eternals", 47, 2021, 200000000, 402100000, 202100000);
+INSERT INTO marvel_movies VALUES (27, "Spider-Man: No Way Home", 93, 2021, 200000000, 1914000000, 1714000000);
+INSERT INTO marvel_movies VALUES (28, "Doctor Strange in the Multiverse of Madness", 74, 2022, 200000000, 955800000, 755800000);
+INSERT INTO marvel_movies VALUES (29, "Thor: Love and Thunder", 64, 2022, 250000000, 758000000, 508000000);
+
+SELECT * FROM marvel_movies;
+
+/*What is the average rating of all Marvel movies?*/
+SELECT AVG(rating) FROM marvel_movies;
+
+/*Which is the highest rated Marvel movie?*/
+SELECT title, MAX(rating) FROM marvel_movies;
+
+/*Which is the lowest rated Marvel movie?*/
+SELECT title, MIN(rating) FROM marvel_movies;
+
+/*What is the average profit of all Marvel movies?*/
+SELECT AVG(profit) FROM marvel_movies;
+
+/*Which is the most profitable Marvel movie?*/
+SELECT title, MAX(profit) FROM marvel_movies;
+
+/*Which is the least profitable Marvel movie?*/
+SELECT title, MIN(profit) FROM marvel_movies;
+
+/*Which movies were released after 2012 and have a rating of over 90%?*/
+SELECT title FROM marvel_movies WHERE year > 2012 AND rating > 90;
+
+/*Which movies made profits of over $1 billion?*/
+SELECT title FROM marvel_movies
+    GROUP BY title
+    HAVING profit > 1000000000;
+    
+/*Which movies had a profit margin of over $500 million? Under?*/
+SELECT title, profit,
+    CASE
+        WHEN profit > 500000000 THEN "Over $500m Profit"
+        ELSE "Under $500m Profit"
+    END as "profit_margin"
+FROM marvel_movies;
+
+/*How many movies had a profit margin of over $500 million? Under?*/
+SELECT COUNT(*),
+    CASE
+        WHEN profit > 500000000 THEN "Over $500m Profit"
+        ELSE "Under $500m Profit"
+    END as "profit_margin"
+FROM marvel_movies
+GROUP BY profit_margin;
