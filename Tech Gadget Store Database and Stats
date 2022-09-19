@@ -1,5 +1,7 @@
---Create a tech gadget store database
+# For this project, I created a sample tech gadget store database table.
+# I performed analytics ont he data using SQL.
 
+# Creating the table:
 CREATE TABLE Store (id INTEGER PRIMARY KEY, name TEXT, quantity INTEGER, aisle INTEGER, price INTEGER, profit INTEGER);
 INSERT INTO Store VALUES (1, "Monitors", 2, 1, 500, 100);
 INSERT INTO Store VALUES (2, "Amazon Echo", 1, 2, 50, 20);
@@ -17,14 +19,15 @@ INSERT INTO Store VALUES (13, "TVs", 1, 3, 25, 19);
 INSERT INTO Store VALUES (14, "Wifi Extender", 1, 4, 7, 3);
 INSERT INTO Store VALUES (15, "Laptop", 1, 5, 300, 150);
 
---display the database ordered by price.
+# Exploring the data using SQL.
+/*Display the database ordered by price*/
 SELECT * FROM store
 ORDER BY price desc; 
 
---display the database ordered by aisle.
+/*Display the database ordered by aisle*/
 SELECT * FROM Store
 WHERE Aisle ORDER BY Aisle;
 
---if we sold all inventory, what would the total profit be?
+/*If we sold all inventory, what would the total profit be?*/
 SELECT * FROM Store;
 SELECT SUM(Profit) from Store;
