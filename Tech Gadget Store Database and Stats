@@ -1,5 +1,5 @@
 # For this project, I created a sample tech gadget store database table.
-# I performed analytics ont he data using SQL.
+# I performed analytics on the data using SQL.
 
 # Creating the table:
 CREATE TABLE Store (id INTEGER PRIMARY KEY, name TEXT, quantity INTEGER, aisle INTEGER, price INTEGER, profit INTEGER);
