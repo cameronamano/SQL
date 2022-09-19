@@ -1,5 +1,8 @@
-/*Create a database cataloguing all Marvel movies with Rotten Tomatoes ratings and profits*/
+# For this project, I compiled Marvel movie statistics from the internet.
+# Then I created a table to insert Marvel movie data into.
+# Finaly, I performed analytics on the data using SQL.
 
+# Creating the table:
 CREATE TABLE marvel_movies (
     id INTEGER PRIMARY KEY,
     title TEXT,
@@ -8,7 +11,8 @@ CREATE TABLE marvel_movies (
     budget INTEGER,
     box_office INTEGER,
     profit INTEGER);
-    
+
+# Inserting the Marvel movie data into the table:
 INSERT INTO marvel_movies VALUES (1, "Iron Man", 94, 2008, 140000000, 585800000, 445800000);
 INSERT INTO marvel_movies VALUES (2, "The Incredible Hulk", 67, 2008, 137500000, 264800000, 127300000);
 INSERT INTO marvel_movies VALUES (3, "Iron Man 2", 72, 2010, 170000000, 623900000, 453900000);
@@ -39,6 +43,7 @@ INSERT INTO marvel_movies VALUES (27, "Spider-Man: No Way Home", 93, 2021, 20000
 INSERT INTO marvel_movies VALUES (28, "Doctor Strange in the Multiverse of Madness", 74, 2022, 200000000, 955800000, 755800000);
 INSERT INTO marvel_movies VALUES (29, "Thor: Love and Thunder", 64, 2022, 250000000, 758000000, 508000000);
 
+# Next, I explored the data using the following SQL.
 SELECT * FROM marvel_movies;
 
 /*What is the average rating of all Marvel movies?*/
