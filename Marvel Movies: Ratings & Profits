@@ -1,3 +1,5 @@
+/*Create a database cataloguing all Marvel movies with Rotten Tomatoes ratings and profits*/
+
 CREATE TABLE marvel_movies (
     id INTEGER PRIMARY KEY,
     title TEXT,
