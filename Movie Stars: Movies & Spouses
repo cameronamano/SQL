@@ -1,0 +1,91 @@
+# For this project, I compiled movie star data from Google.
+# Then I created 3 tables to insert movie star data into.
+# Finally, I performed analytics on the data using SQL.
+
+# Creating the actors table:
+CREATE TABLE actors (id INTEGER PRIMARY KEY,
+    name TEXT);
+   # Inserting movie star names into the table:
+   INSERT INTO actors (name)
+        VALUES ("Blake Lively");
+    INSERT INTO actors (name)
+        VALUES ("Ryan Reynolds");
+    INSERT INTO actors (name)
+        VALUES ("Eva Mendes");    
+    INSERT INTO actors (name)
+        VALUES ("Ryan Gosling");
+    INSERT INTO actors (name)
+        VALUES ("Kristen Bell");
+    INSERT INTO actors (name)
+        VALUES ("Dax Shepard");
+# Creating the spouses table:
+CREATE TABLE spouses (id INTEGER PRIMARY KEY,
+    actor1_id INTEGER,
+    actor2_id INTEGER);
+   # Inserting spouse IDs into the table:
+   INSERT INTO spouses (actor1_id, actor2_id)
+        VALUES (1, 2);    
+    INSERT INTO spouses (actor1_id, actor2_id)
+        VALUES (3, 4);  
+    INSERT INTO spouses (actor1_id, actor2_id)
+        VALUES (5, 6);    
+# Creating the movies table:
+CREATE TABLE movies (id INTEGER PRIMARY KEY,
+    actor_id INTEGER,
+    movie_title TEXT);
+    # Inserting the movie list into the table:
+    INSERT INTO movies (actor_id, movie_title)
+        VALUES (1, "The Age of Adeline");
+    INSERT INTO movies (actor_id, movie_title)
+        VALUES (1, "A Simple Favor"); 
+    INSERT INTO movies (actor_id, movie_title)
+        VALUES (1, "The Sisterhood of the Traveling Pants");
+    INSERT INTO movies (actor_id, movie_title)
+        VALUES (2, "Free Guy");    
+    INSERT INTO movies (actor_id, movie_title)
+        VALUES (2, "Deadpool");
+    INSERT INTO movies (actor_id, movie_title)
+        VALUES (2, "The Proposal");     
+    INSERT INTO movies (actor_id, movie_title)
+        VALUES (3, "Hitch");    
+    INSERT INTO movies (actor_id, movie_title)
+        VALUES (3, "Ghost Rider");
+    INSERT INTO movies (actor_id, movie_title)
+        VALUES (3, "2 Fast 2 Furious");   
+    INSERT INTO movies (actor_id, movie_title)
+        VALUES (4, "La La Land");  
+    INSERT INTO movies (actor_id, movie_title)
+        VALUES (4, "Crazy, Stupid, Love"); 
+    INSERT INTO movies (actor_id, movie_title)
+        VALUES (4, "The Notebook"); 
+    INSERT INTO movies (actor_id, movie_title)
+        VALUES (5, "Frozen");
+    INSERT INTO movies (actor_id, movie_title)
+        VALUES (5, "Frozen 2");    
+    INSERT INTO movies (actor_id, movie_title)
+        VALUES (5, "When in Rome");
+    INSERT INTO movies (actor_id, movie_title)
+        VALUES (6, "Zathura");
+    INSERT INTO movies (actor_id, movie_title)
+        VALUES (6, "Cheaper by the Dozen");
+    INSERT INTO movies (actor_id, movie_title)
+        VALUES (6, "Baby Mama");
+
+# Next, I explored the data using the following SQL.
+SELECT * FROM actors;
+SELECT * FROM spouses;
+SELECT * FROM movies;
+
+/*Which actors are in which movies?*/
+SELECT name, movie_title
+    FROM movies
+    JOIN actors
+    ON movies.actor_id = actors.id;
+    
+/*Which actors are married to each other?*/
+SELECT a.name, b.name
+    FROM spouses
+    JOIN actors a
+    ON spouses.actor1_id = a.id
+    JOIN actors b
+    ON spouses.actor2_id = b.id;
