@@ -42,9 +42,9 @@ SELECT track_name, artist_name, popularity
 
 # Then I determined which artist released the longest song.
 SELECT artist_name, MAX(duration_ms)
-    FROM Spotifydata
+    FROM Spotifydata;
 
-# Then I determined what the average danceability for the 10 most popular songs.
+# Then I determined the average danceability for the 10 most popular songs.
 SELECT track_name, popularity, danceability
     FROM Spotifydata
     WHERE popularity in (SELECT popularity
