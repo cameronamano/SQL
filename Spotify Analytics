@@ -21,7 +21,7 @@ CREATE TABLE BIT_DB.Spotifydata (
     valence decimal(4,3) NOT NULL,
     tempo decimal(6,3) NOT NULL,
     duration_ms integer NOT NULL,
-    time_signature integer NOT NULL)
+    time_signature integer NOT NULL);
     
 # Then I inserted the Spotify Data .csv into the table.
 
@@ -53,3 +53,13 @@ SELECT track_name, popularity, danceability
         LIMIT 10)
     ORDER BY danceability DESC
     LIMIT 10;
+    
+# Then I calculated the average popularity for the artists and labeled the ones with an average popularity of 90 or above as a "Top Star".
+WITH average_pop_CTE AS(
+    SELECT artist_name, AVG(popularity) AS avg_pop
+    FROM Spotifydata
+    GROUP BY artist_name)
+SELECT artist_name, avg_pop, 'Top Star' AS Tag
+    FROM average_pop_CTE
+    WHERE avg_pop>=90
+    ORDER BY avg_pop DESC;
